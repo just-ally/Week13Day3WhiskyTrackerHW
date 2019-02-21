@@ -16,26 +16,26 @@ public class WhiskyRepositoryImpl implements WhiskyRepositoryCustom {
     @Autowired
     EntityManager entityManager;
 
-    @Override
-    public List<Whisky> findWhiskiesFromDistilleryOfAge(String distilleryName, int age) {
-
-        List<Whisky> results = null;
-        Criteria cr = null;
-
-        try {
-            Session session = entityManager.unwrap(Session.class);
-            cr = session.createCriteria(Whisky.class);
-            cr.createAlias("distillery", "distillery");
-            cr.add(Restrictions.eq("distillery.name", distilleryName));
-            cr.add(Restrictions.eq("age", age));
-        } catch (HibernateException e) {
-            e.printStackTrace();
-        }
-
-        results = cr.list();
-        return results;
-
-    }
+//    @Override
+//    public List<Whisky> findWhiskiesFromDistilleryOfAge(String distilleryName, int age) {
+//
+//        List<Whisky> results = null;
+//        Criteria cr = null;
+//
+//        try {
+//            Session session = entityManager.unwrap(Session.class);
+//            cr = session.createCriteria(Whisky.class);
+//            cr.createAlias("distillery", "distillery");
+//            cr.add(Restrictions.eq("distillery.name", distilleryName));
+//            cr.add(Restrictions.eq("age", age));
+//        } catch (HibernateException e) {
+//            e.printStackTrace();
+//        }
+//
+//        results = cr.list();
+//        return results;
+//
+//    }
 
     @Override
     public List<Whisky> findWhiskiesFromRegion(String region) {

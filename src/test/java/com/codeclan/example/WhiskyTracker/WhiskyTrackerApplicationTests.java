@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import javax.persistence.EntityManager;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -41,7 +42,13 @@ public class WhiskyTrackerApplicationTests {
 		assertEquals("Rosebank", found.get(0).getName());
 	}
 
-//	Failing - Caused by: java.lang.IllegalStateException: No transactional EntityManager available
+	@Test
+	public void findWhiskiesByAgeAndDistilleryId() {
+		List<Whisky> found = whiskyRepository.findWhiskiesByAgeAndDistilleryId(15, 1L);
+		assertEquals("The Glendronach Revival", found.get(0).getName());
+	}
+
+	//	Failing - Caused by: java.lang.IllegalStateException: No transactional EntityManager available
 //	but working on browser
 
 //	@Test
