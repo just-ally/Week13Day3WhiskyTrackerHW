@@ -42,24 +42,26 @@ public class WhiskyTrackerApplicationTests {
 		assertEquals("Rosebank", found.get(0).getName());
 	}
 
-	@Test
-	public void findWhiskiesByAgeAndDistilleryId() {
-		List<Whisky> found = whiskyRepository.findWhiskiesByAgeAndDistilleryId(15, 1L);
-		assertEquals("The Glendronach Revival", found.get(0).getName());
-	}
+	// tried third question by derived query rather than custom
+
+//	@Test
+//	public void findWhiskiesByAgeAndDistilleryId() {
+//		List<Whisky> found = whiskyRepository.findWhiskiesByAgeAndDistilleryId(15, 1L);
+//		assertEquals("The Glendronach Revival", found.get(0).getName());
+//	}
 
 	//	Failing - Caused by: java.lang.IllegalStateException: No transactional EntityManager available
 //	but working on browser
 
-//	@Test
-//	public void findWhiskyByAgeAndByDistillery() {
-//		List<Whisky> found = whiskyRepository.findWhiskiesFromDistilleryOfAge( "Glendronach", 12);
-//		assertEquals("The Glendronach Original", found.get(0).getName());
-//	}
-//
-//	@Test
-//	public void findWhiskyByRegion() {
-//		List<Whisky> found = whiskyRepository.findWhiskiesFromRegion("Highland");
-//		assertEquals(2, found.size());
-//	}
+	@Test
+	public void findWhiskyByAgeAndByDistillery() {
+		List<Whisky> found = whiskyRepository.findWhiskiesFromDistilleryOfAge( "Glendronach", 12);
+		assertEquals("The Glendronach Original", found.get(0).getName());
+	}
+
+	@Test
+	public void findWhiskyByRegion() {
+		List<Whisky> found = whiskyRepository.findWhiskiesFromRegion("Highland");
+		assertEquals(2, found.size());
+	}
 }

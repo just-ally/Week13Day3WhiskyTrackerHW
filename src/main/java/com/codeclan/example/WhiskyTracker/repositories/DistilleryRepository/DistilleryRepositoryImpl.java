@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
+import javax.transaction.Transactional;
 import java.util.List;
 
 public class DistilleryRepositoryImpl implements DistilleryRepositoryCustom {
@@ -17,6 +18,7 @@ public class DistilleryRepositoryImpl implements DistilleryRepositoryCustom {
     @Autowired
     EntityManager entityManager;
 
+    @Transactional
     @Override
     public List<Distillery> findDistilleriesWithWhiskiesOfAge(int age) {
 
